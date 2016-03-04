@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>5 4 turn based game</title>
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+
+      <div class="container-fluid">
+            <div class="row game-container">
+                  <img src="https://s-media-cache-ak0.pinimg.com/736x/8c/9f/b2/8c9fb2ec1e7f017c58964561ea24e00c.jpg" alt="">
+            </div>
+      </div>
+
+
+    <!-- handlebars templates ---->
+
+    <script id="choose-hero" type="text/x-handlebars-template">
+
+
+
+
+          <select name="Choose Your Hero" id="hero-selection">
+            <option value="Choose Your Hero">Choose Your Hero</option>
+            <option value="{{Link.name}}">{{Link.name}}</option>
+            <option value="Zelda">{{Zelda.name}}</option>
+
+          </select>
+
+          <button type="button" class="btn btn-danger start-button">Start Game</button>
+
+
+
+
+
+    </script>
+
+
+    <script id="arena-template" type="text/x-handlebars-template">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{hero.name}}</h3>
+              </div>
+              <div class="panel-body">
+                  <img src="{{hero.avatar}}" alt="">
+                  <p class="hero-health">{{hero.health}}</p>
+            </div>
+              <button type="button" class="btn btn-danger attack-button">Attack</button>
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+
+                <h3 class="panel-title">{{monsters.Ganondorf.name}}</h3>
+
+              </div>
+              <div class="panel-body">
+                  <img src="{{monsters.Ganondorf.avatar}}" alt="">
+                  <p class="monster-health">{{monsters.Ganondorf.health}}</p>
+            </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+     </script>
+
+
+
+    <script src="js/bundle.js"></script>
+  </body>
+</html>
