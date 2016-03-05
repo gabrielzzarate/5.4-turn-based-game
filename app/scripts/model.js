@@ -30,6 +30,8 @@ function Hero(params){
 Hero.prototype.attack= function(victim) {
 
   victim.health = victim.health - this.power;
+
+  displayGameOver();
   //$(document).trigger('health-changed');
 
 };
@@ -39,7 +41,8 @@ var heroes = {
     name: 'Link',
     health: 12,
     power: 1,
-    avatar: "http://www.supermariobrosx.org/forums/download/file.php?avatar=4411_1430490375.jpg"
+    avatar: "http://www.supermariobrosx.org/forums/download/file.php?avatar=4411_1430490375.jpg",
+    victory: "http://static.srcdn.com/slir/w620-h320-q90-c620:320/wp-content/uploads/legend-zelda-netflix-tv-series-link.jpg"
 
 
   }),
@@ -48,9 +51,20 @@ var heroes = {
     name: 'Zelda',
     health: 8,
     power: 3,
-    avatar: "http://www.unikgamer.com/characters/face/princess-zelda-77.jpg"
+    avatar: "http://www.unikgamer.com/characters/face/princess-zelda-77.jpg",
+    victory: "http://www.wallpaperhi.com/thumbnails/detail/20130512/the%20legend%20of%20zelda%20princess%20zelda_www.wallpaperhi.com_7.jpg"
 
   }),
+
+  'Sheik': new Hero ({
+    name: 'Sheik',
+    health: 8,
+    power: 3,
+    avatar: 'http://vignette2.wikia.nocookie.net/zelda/images/8/82/Sheik_(SSB_3DS_%26_Wii_U).png/revision/latest?cb=20140414232000',
+    victory: "http://www.ssbwiki.com/images/thumb/7/78/OoT_Sheik_PM.png/180px-OoT_Sheik_PM.png"
+
+  }),
+
 
   'Younglink': new Hero ({
     name: 'Young Link',

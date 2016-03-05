@@ -53,6 +53,23 @@ function GameOverView() {
   $('.game-container').html();
 }
 
+GameOverView.prototype.endGame = function(heroSelectionCaptured, heroes, monsters, randomMonster) {
+  var context = {
+    'hero': heroSelectionCaptured,
+    'heroes': heroes,
+    'monsters': monsters,
+    'randomMonster': randomMonster
+  };
+
+  var source = $('#gameOver-template').html();
+  var template = handlebars.compile(source);
+  var renderedTemplate = template(context);
+
+  $('.game-container').html(renderedTemplate);
+};
+
+
+
 module.exports = {
   'WelcomeView': WelcomeView,
   'ArenaView': ArenaView,

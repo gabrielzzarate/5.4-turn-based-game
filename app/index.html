@@ -33,6 +33,7 @@
             <option value="{{Link.name}}">{{Link.name}}</option>
             <option value="{{Zelda.name}}">{{Zelda.name}}</option>
             <option value="{{Younglink.name}}">{{Younglink.name}}</option>
+            <option value="{{Sheik.name}}">{{Sheik.name}}</option>
 
           </select>
 
@@ -49,7 +50,7 @@
 
         <div class="row">
           <div class="col-md-6">
-            <div class="panel panel-default">
+            <div class="panel panel-default hero-panel">
               <div class="panel-heading">
                 <h3 class="panel-title">{{hero.name}}</h3>
               </div>
@@ -64,7 +65,7 @@
 
 
           <div class="col-md-6">
-            <div class="panel panel-default">
+            <div class="panel panel-default monster-panel">
               <div class="panel-heading">
 
                 <h3 class="panel-title">{{randomMonster.name}}</h3>
@@ -84,6 +85,11 @@
 
      </script>
 
+
+    <script id="gameOver-template" type="text/x-handlebars-template">
+          <span>You Win!</span>
+
+    </script>
 
 
     <script src="js/bundle.js"></script>
