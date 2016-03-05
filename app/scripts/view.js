@@ -9,7 +9,7 @@ var _ = require('underscore');
 ///welc screen
 /// window.heros templatew
 function WelcomeView() {
-  $('.game-container').html();
+  //$('.game-container').html();
 }
 
 
@@ -25,31 +25,28 @@ WelcomeView.prototype.chooseHeroes = function(heroes){
 };
 
 
-
-//console.log(window.Heroes);
-
-
-
-
-
 function ArenaView() {
   //$('.game-container').html();
 }
 
-ArenaView.prototype.startGame = function(heroSelectionCaptured, heroes, monsters) {
+ArenaView.prototype.startGame = function(heroSelectionCaptured, heroes, monsters, randomMonster) {
   //console.log("start game monsters: ", monsters);
   var context = {
     'hero': heroSelectionCaptured,
     'heroes': heroes,
-    'monsters': monsters
+    'monsters': monsters,
+    'randomMonster': randomMonster
   };
-  console.log("context", context);
+  //console.log('context', context);
+
   var source = $("#arena-template").html();
   var template = handlebars.compile(source);
   var renderedTemplate = template(context);
 
   $('.game-container').html(renderedTemplate);
-  console.log(heroSelectionCaptured);
+  $(document).trigger('game-started');
+
+
 };
 
 function GameOverView() {

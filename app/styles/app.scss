@@ -1,7 +1,7 @@
 
 
-$grid-gutter-width: 10px;
-$container-large-desktop: 1024px;
+//$grid-gutter-width: 10px;
+//$container-large-desktop: 1024px;
 $box-shadow: 0 4px 0 0 rgba(64, 55, 55, 0.5);
 // Bootstrap Variables
 $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
@@ -19,13 +19,13 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 img {
   max-width: 100%;
 }
-.wrapper {
-  //width: 1200px;
-  //height: 900px;
+
+body {
+  height: 100%;
 }
 
 .game-container {
 
-  //background-image: url("https://s-media-cache-ak0.pinimg.com/736x/8c/9f/b2/8c9fb2ec1e7f017c58964561ea24e00c.jpg");
+//  background-image: url("https://s-media-cache-ak0.pinimg.com/736x/8c/9f/b2/8c9fb2ec1e7f017c58964561ea24e00c.jpg");
   //-webkit-background-size: cover;
 }

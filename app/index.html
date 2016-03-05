@@ -8,24 +8,31 @@
   </head>
   <body>
 
-      <div class="container-fluid">
-            <div class="row game-container">
-                  <img src="https://s-media-cache-ak0.pinimg.com/736x/8c/9f/b2/8c9fb2ec1e7f017c58964561ea24e00c.jpg" alt="">
+      <div class="container">
+          <div class="row">
+            <div class="game-container col-md-12">
+               <img src="https://s-media-cache-ak0.pinimg.com/736x/8c/9f/b2/8c9fb2ec1e7f017c58964561ea24e00c.jpg" alt="">
             </div>
+          </div>
       </div>
 
+       <audio id="ganonLaugh" src="audio/ganonLaugh.wav" type="audio/wav"></audio>
+       <audio id="twinrovaAppear" src="audio/Twinrova_Appear.wav" type="audio/wav"></audio>
+       <audio id="twinrovaLaugh" src="audio/Twinrova_Laugh.wav" type="audio/wav"></audio>
+       <audio id="gohmaScream" src="audio/Gohma_Scream.wav" type="audio/wav"></audio>
 
     <!-- handlebars templates ---->
 
     <script id="choose-hero" type="text/x-handlebars-template">
 
 
-
+      <audio id="zeldaTheme" src="audio/zelda_theme.wav" type="audio/wav" preload="auto"></audio>
 
           <select name="Choose Your Hero" id="hero-selection">
             <option value="Choose Your Hero">Choose Your Hero</option>
             <option value="{{Link.name}}">{{Link.name}}</option>
-            <option value="Zelda">{{Zelda.name}}</option>
+            <option value="{{Zelda.name}}">{{Zelda.name}}</option>
+            <option value="{{Younglink.name}}">{{Younglink.name}}</option>
 
           </select>
 
@@ -48,7 +55,8 @@
               </div>
               <div class="panel-body">
                   <img src="{{hero.avatar}}" alt="">
-                  <p class="hero-health">{{hero.health}}</p>
+                  <p class="hero-health">Health {{hero.health}}</p>
+
             </div>
               <button type="button" class="btn btn-danger attack-button">Attack</button>
             </div>
@@ -59,12 +67,13 @@
             <div class="panel panel-default">
               <div class="panel-heading">
 
-                <h3 class="panel-title">{{monsters.Ganondorf.name}}</h3>
+                <h3 class="panel-title">{{randomMonster.name}}</h3>
+                <span>{{randomMonster.warCry}}</span>
 
               </div>
               <div class="panel-body">
-                  <img src="{{monsters.Ganondorf.avatar}}" alt="">
-                  <p class="monster-health">{{monsters.Ganondorf.health}}</p>
+                  <img src="{{randomMonster.avatar}}" alt="">
+                  <p class="monster-health">Health {{randomMonster.health}}</p>
             </div>
 
             </div>
