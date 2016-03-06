@@ -26,7 +26,7 @@
   "scripts": {
     "html": "cp app/*.html dist/",
     "audio": "cp app/audio/*.wav dist/audio/",
-    "fonts": "cp app/fonts/*.ttf dist/fonts/",
+    
     "scss": "sass --style compressed --update app/styles:dist/css",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*.css",
     "lint": "eslint app/scripts",
@@ -42,9 +42,9 @@
     "watch:js": "watchify app/scripts/index.js -o dist/js/bundle.js",
     "watch:html": "npm run html && onchange 'app/**/*.html' -- npm run html",
     "watch:audio": "npm run audio && onchange 'app/audio/*.wav' -- npm run audio",
-    "watch:fonts": "npm run fonts && onchange 'app/fonts/*.ttf' -- npm run fonts",
+ 
     "server": "live-server --open='dist'",
-    "watch": "parallelshell 'npm run watch:html' 'npm run watch:scss' 'npm run watch:js' 'npm run watch:audio' 'npm run watch:fonts''npm run server'"
+    "watch": "parallelshell 'npm run watch:html' 'npm run watch:scss' 'npm run watch:js' 'npm run watch:audio' 'npm run server'"
   },
   "browserify": {
     "transform": [

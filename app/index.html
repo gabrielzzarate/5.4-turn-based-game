@@ -10,8 +10,9 @@
 
       <div class="container">
           <div class="row">
-            <div class="game-container col-md-12">
-               <img src="https://s-media-cache-ak0.pinimg.com/736x/8c/9f/b2/8c9fb2ec1e7f017c58964561ea24e00c.jpg" alt="">
+            <div class="game-container col-md-8 col-md-offset-1">
+                <iframe src="//giphy.com/embed/leAV27tKs2PiE" width="900" height="700" frameborder="0" class="giphy-embed intro-gif" allowfullscreen></iframe>
+               <!-- <img src="https://s-media-cache-ak0.pinimg.com/736x/8c/9f/b2/8c9fb2ec1e7f017c58964561ea24e00c.jpg" alt=""> -->
             </div>
           </div>
       </div>
@@ -20,6 +21,24 @@
        <audio id="twinrovaAppear" src="audio/Twinrova_Appear.wav" type="audio/wav"></audio>
        <audio id="twinrovaLaugh" src="audio/Twinrova_Laugh.wav" type="audio/wav"></audio>
        <audio id="gohmaScream" src="audio/Gohma_Scream.wav" type="audio/wav"></audio>
+       <audio id="ganondorfSfxA" src="audio/Ganondorf_sfx_a.wav" type="audio/wav"></audio>
+       <audio id="ganondorfSfxB" src="audio/Ganondorf_sfx_b.wav" type="audio/wav"></audio>
+       <audio id="ganondorfDie" src="audio/Ganondorf_die.wav" type="audio/wav"></audio>
+       <audio id="twinrovaSfx" src="audio/Twinrova_sfx.wav" type="audio/wav"></audio>
+       <audio id="twinrovaDie" src="audio/Twinrova_die.wav" type="audio/wav"></audio>
+       <audio id="gohmaSfx" src="audio/Gohma_sfx.wav" type="audio/wav"></audio>
+       <audio id="gohmaDie" src="audio/Gohma_die.wav" type="audio/wav"></audio>
+       <audio id="linkSfx" src="audio/link_sfx.wav" type="audio/wav"></audio>
+       <audio id="linkDie" src="audio/link_die.wav" type="audio/wav"></audio>
+       <audio id="zeldaSfx" src="audio/Zelda_sfx.wav" type="audio/wav"></audio>
+       <audio id="zeldaDie" src="audio/Zelda_die.wav" type="audio/wav"></audio>
+       <audio id="youngLinkSfx" src="audio/youngLink_attack.wav" type="audio/wav"></audio>
+       <audio id="youngLinkDie" src="audio/youngLink_die.wav" type="audio/wav"></audio>
+        <audio id="sheikSfx" src="audio/Sheik_die.wav" type="audio/wav"></audio>
+         <audio id="sheikDie" src="audio/Sheik_die.wav" type="audio/wav"></audio>
+         <audio id="gameOverLaugh" src="audio/gameOver_laugh.wav" type="audio/wav"></audio>
+
+
 
     <!-- handlebars templates ---->
 
@@ -32,8 +51,9 @@
             <option value="Choose Your Hero">Choose Your Hero</option>
             <option value="{{Link.name}}">{{Link.name}}</option>
             <option value="{{Zelda.name}}">{{Zelda.name}}</option>
-            <option value="{{Younglink.name}}">{{Younglink.name}}</option>
+
             <option value="{{Sheik.name}}">{{Sheik.name}}</option>
+
 
           </select>
 
@@ -43,6 +63,12 @@
 
 
 
+    </script>
+
+
+    <script id="setStage-template" type="text/x-handlebars-template">
+      <audio id="setStage" src="audio/setStageTune.wav" type="audio/wav"></audio>
+      <iframe src="//giphy.com/embed/z0IajaXUOjGNO" width="900" height="700" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
     </script>
 
 
@@ -56,7 +82,8 @@
               </div>
               <div class="panel-body">
                   <img src="{{hero.avatar}}" alt="">
-                  <p class="hero-health">Health {{hero.health}}</p>
+                  <p>Health</p>
+                  <p class="hero-health">{{hero.health}}</p>
 
             </div>
               <button type="button" class="btn btn-danger attack-button">Attack</button>
@@ -74,6 +101,7 @@
               </div>
               <div class="panel-body">
                   <img src="{{randomMonster.avatar}}" alt="">
+                  <p>Health</p>
                   <p class="monster-health">Health {{randomMonster.health}}</p>
             </div>
 

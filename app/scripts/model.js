@@ -31,7 +31,7 @@ Hero.prototype.attack= function(victim) {
 
   victim.health = victim.health - this.power;
 
-  displayGameOver();
+  //displayGameOver();
   //$(document).trigger('health-changed');
 
 };
@@ -39,6 +39,12 @@ Hero.prototype.attack= function(victim) {
 var heroes = {
   'Link': new Hero ({
     name: 'Link',
+    sfx: function(){
+      $('#linkSfx')[0].play();
+    },
+    die: function(){
+      $('#linkDie')[0].play();
+    },
     health: 12,
     power: 1,
     avatar: "http://www.supermariobrosx.org/forums/download/file.php?avatar=4411_1430490375.jpg",
@@ -49,6 +55,12 @@ var heroes = {
 
   'Zelda': new Hero ({
     name: 'Zelda',
+    sfx: function(){
+      $('#zeldaSfx')[0].play();
+    },
+    die: function(){
+      $('#zeldaDie')[0].play();
+    },
     health: 8,
     power: 3,
     avatar: "http://www.unikgamer.com/characters/face/princess-zelda-77.jpg",
@@ -56,23 +68,26 @@ var heroes = {
 
   }),
 
+
+
+
   'Sheik': new Hero ({
     name: 'Sheik',
+    sfx: function(){
+      $('#sheikSfx')[0].play();
+    },
+    die: function(){
+      $('#sheikDie')[0].play();
+    },
     health: 8,
     power: 3,
     avatar: 'http://vignette2.wikia.nocookie.net/zelda/images/8/82/Sheik_(SSB_3DS_%26_Wii_U).png/revision/latest?cb=20140414232000',
     victory: "http://www.ssbwiki.com/images/thumb/7/78/OoT_Sheik_PM.png/180px-OoT_Sheik_PM.png"
 
-  }),
-
-
-  'Younglink': new Hero ({
-    name: 'Young Link',
-    health: 4,
-    power: 2,
-    avatar: "http://img01.deviantart.net/5c28/i/2010/365/d/0/young_link_with_master_sword_by_skilarbabcock-d362wym.jpg"
-
   })
+
+
+
 
 };
 
@@ -92,6 +107,16 @@ var monsters= {
     warCry: function(){
       $('#ganonLaugh')[0].play();
       //document.getElementById('ganonLaugh').play();
+    },
+    sfx: function(){
+      $('#ganondorfSfxA')[0].play();
+      setTimeout(function(){
+        $('#ganondorfSfxB')[0].play();
+      }, 800);
+
+    },
+    die: function(){
+      $('#ganondorfDie')[0].play();
     },
     avatar: 'http://pre02.deviantart.net/b1f2/th/pre/f/2012/268/7/6/ganondorf_by_theminttu-d5fwoo8.jpg'
   }),
@@ -114,6 +139,12 @@ var monsters= {
         $('#twinrovaLaugh')[0].play();
       }, 800);
     },
+    sfx: function(){
+      $('#twinrovaSfx')[0].play();
+    },
+    die: function(){
+      $('#twinrovaDie')[0].play();
+    },
     avatar: 'http://images1.wikia.nocookie.net/__cb20110721220244/villains/images/b/b8/Twinrova_seperated.png'
   }),
 
@@ -123,6 +154,12 @@ var monsters= {
     power: 5,
     warCry: function(){
       $('#gohmaScream')[0].play();
+    },
+    sfx: function(){
+      $('#gohmaSfx')[0].play();
+    },
+    die: function(){
+      $('#gohmaDie')[0].play();
     },
     avatar: 'http://vignette4.wikia.nocookie.net/zelda/images/b/b1/Queen_Gohma_Artwork.png/revision/latest?cb=20110427012302'
   }),

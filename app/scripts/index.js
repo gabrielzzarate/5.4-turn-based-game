@@ -27,7 +27,7 @@ init();
 $('.start-button').on('click', function(){
     // Setup view
     var arena = new views.ArenaView();
-
+    var setTheStage = new views.SetTheStageView();
     // Get the hero and monster
     var heroSelected = $('#hero-selection').val();
     var heroSelectionCaptured = models.heroes[heroSelected];
@@ -42,7 +42,12 @@ $('.start-button').on('click', function(){
 
 
     // kick the tires and light the fires!
-    arena.startGame(models.heroes[heroSelected], models.heroes, models.monsters, monster);
+    setTheStage.setStage();
+    $('#setStage')[0].play();
+    setTimeout(function(){
+      arena.startGame(models.heroes[heroSelected], models.heroes, models.monsters, monster);
+    }, 2400);
+    //arena.startGame(models.heroes[heroSelected], models.heroes, models.monsters, monster);
 
 
 
@@ -59,6 +64,7 @@ function getRandomMonster() {
   return randomMonster;
 }
 
+/*
 function displayGameOver(){
   var gameOver = new views.GameOverView();
 
@@ -67,7 +73,7 @@ function displayGameOver(){
     }
 
 
-}
+} */
 
 $(document).on('game-started', function(){
   $('.attack-button').on('click', function() {
@@ -76,6 +82,7 @@ $(document).on('game-started', function(){
 
 
         hero.attack(monster);
+        hero.sfx();
 
         $('.monster-health').html(monster.health);
 
@@ -85,7 +92,7 @@ $(document).on('game-started', function(){
         setTimeout(function(){
           monster.attack(hero);
           $('.hero-health').html(hero.health);
-
+          monster.sfx();
         }, 2000);
 
   });
