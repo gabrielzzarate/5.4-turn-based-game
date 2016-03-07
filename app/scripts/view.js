@@ -20,7 +20,7 @@ WelcomeView.prototype.chooseHeroes = function(heroes){
   var template = handlebars.compile(source);
   var renderedTemplate = template(context);
 
-  $('.game-container').append(renderedTemplate);
+  $('.game-container').prepend(renderedTemplate);
 
 };
 
@@ -89,11 +89,33 @@ GameOverView.prototype.endGame = function(heroSelectionCaptured, heroes, monster
   $('#gameOverLaugh')[0].play();
 };
 
+function YouWinView() {
+  $('.game-container').html();
+}
+
+YouWinView.prototype.youWin = function(heroSelectionCaptured, heroes, monsters, randomMonster) {
+  var context = {
+    'hero': heroSelectionCaptured,
+    'heroes': heroes,
+    'monsters': monsters,
+    'randomMonster': randomMonster
+  };
+
+  var source = $('#youwin-template').html();
+  var template = handlebars.compile(source);
+  var renderedTemplate = template(context);
+
+  $('.game-container').html(renderedTemplate);
+  $('#youWin')[0].play();
+};
+
+
 
 
 module.exports = {
   'WelcomeView': WelcomeView,
   'SetTheStageView': SetTheStageView,
   'ArenaView': ArenaView,
-  'GameOverView': GameOverView
+  'GameOverView': GameOverView,
+  'YouWinView': YouWinView
 };

@@ -14,22 +14,25 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 *::before,
 *::after {
   box-sizing: border-box;
+
+
 }
 
 img {
   max-width: 100%;
+
 }
 
 body {
-  //height: 100%;
+  font-family: 'Papyrus';
   background-color: black;
-  font-family: 'triforce';
-  margin: 50px;
+  //font-family: 'triforce';
+  //margin: 80px;
 }
-@font-face {
-    font-family: 'triforce';
-   src: "fonts/Triforce.ttf";
-}
+//@font-face {
+//    font-family: 'triforce';
+//   src: "fonts/Triforce.ttf";
+//}
 
 .game-container {
 
@@ -37,6 +40,99 @@ body {
   //-webkit-background-size: cover;
 }
 
-select {
-  display: inline-block;
+.choose-hero-container {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.fight-container {
+  background-image: url('http://images3.wikia.nocookie.net/__cb20100426192217/zelda/images/a/a3/Forest_Temple_Entrance_Hall_(Ocarina_of_Time).png');
+  -webkit-background-size: cover;
+  height: 700px;
+  color: white;
+
+
+
+
+  .panel-heading {
+    color: white;
+  }
+}
+
+
+
+    .panel-transparent {
+        background: none;
+
+        img {
+          height: 450px;
+          position: relative;
+          top: 30px;
+        }
+    }
+
+    .panel-transparent .panel-heading{
+        background: rgba(122, 130, 136, 0.2)!important;
+        border-color: rgba(122, 130, 136, 0.2)!important;
+    }
+
+    .panel-transparent .panel-body{
+        background: rgba(46, 51, 56, 0.2)!important;
+    }
+
+  .hero-panel, .monster-panel {
+    margin-top: 60px;
+    position: relative;
+    top: 10px;
+
+  }
+
+  .winAndLose h1{
+    color: red;
+    //font-size: 40px;
+
+  }
+
+  .losing-title{
+    color: red;
+  }
+  .winning-title {
+    color: green;
+  }
+  .gameover-image {
+    height: 700px;
+    width: 100%;
+
+
+
+
+}
+//h2.shake,
+//.shake.inline {
+//	display:inline-block
+
+
+ @-webkit-keyframes spaceboots {
+	0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+	10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+	30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+	40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
+	50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); }
+	70% { -webkit-transform: translate(2px, 1px) rotate(-1deg); }
+	80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
+	90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
+	100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+}
+.shake {
+	-webkit-animation-name: spaceboots;
+	-webkit-animation-duration: 0.8s;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+
+  display:inline-block;
+  display:block;
+	position:relative;
 }

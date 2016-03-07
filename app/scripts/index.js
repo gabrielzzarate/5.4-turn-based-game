@@ -46,7 +46,7 @@ $('.start-button').on('click', function(){
     $('#setStage')[0].play();
     setTimeout(function(){
       arena.startGame(models.heroes[heroSelected], models.heroes, models.monsters, monster);
-    }, 2400);
+    }, 2300);
     //arena.startGame(models.heroes[heroSelected], models.heroes, models.monsters, monster);
 
 
@@ -64,63 +64,78 @@ function getRandomMonster() {
   return randomMonster;
 }
 
-/*
+
 function displayGameOver(){
   var gameOver = new views.GameOverView();
+  var winGame = new views.YouWinView();
+  var hero = game.hero,
+    monster = game.monster;
 
-  if (game.hero.health || game.monster.health <= 0) {
+  if (game.hero.health <= 0) {
       gameOver.endGame();
-    }
 
 
-} */
+  } else if (game.monster.health <= 0) {
+      winGame.youWin();
+
+
+  }
+
+
+}
 
 $(document).on('game-started', function(){
+  var hero = game.hero,
+      monster = game.monster;
   $('.attack-button').on('click', function() {
-    var hero = game.hero,
-        monster = game.monster;
 
 
-        hero.attack(monster);
-        hero.sfx();
+        if (hero.health > 0 && monster.health > 0) {
+          hero.attack(monster);
+          hero.sfx();
+          monster.hurt();
+          $('.monster-health').html(monster.health);
 
-        $('.monster-health').html(monster.health);
-
-
+        }
 
 
         setTimeout(function(){
-          monster.attack(hero);
-          $('.hero-health').html(hero.health);
-          monster.sfx();
+          if(monster.health > 0 && hero.health > 0) {
+            monster.attack(hero);
+            $('.hero-health').html(hero.health);
+            monster.sfx();
+            hero.shake();
+
+          }
+
+          $(document).trigger('attack-completed');
         }, 2000);
 
   });
-
-
 });
 
 
-/*
- $(document).on('hero:selected', function(event, hero) {
-   selectedHero = hero;
- });
 
- $(document).on('monster:selected', function(event, monster) {
-   selectedMonster = monster;
- });
- $(document).on('attack:monster', function(event) {
-   selectedHero.attack(selectedMonster);
+ $(document).on('attack-completed', function() {
+   var hero = game.hero,
+       monster = game.monster;
 
- });
+   if(monster.health <= 0) {
 
+       monster.die();
+       setTimeout(function(){
+         displayGameOver();
+       }, 2000);
 
 
- $(document).on('health-changed', function(event, health) {
-   if (game.hero.health || game.monster.health <= 0) {
+
+   } else if (hero.health <= 0) {
+     hero.die();
+     setTimeout(function(){
        displayGameOver();
-     }
-     console.log(game.hero.health);
-     console.log(game.monster.health);
-});
-*/
+     }, 2500);
+
+
+
+   }
+ });

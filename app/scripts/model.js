@@ -35,6 +35,14 @@ Hero.prototype.attack= function(victim) {
   //$(document).trigger('health-changed');
 
 };
+Hero.prototype.shake = function() {
+  $('#hero-image').addClass('shake');
+  setTimeout(function(){
+    $('#hero-image').removeClass('shake');
+  }, 1500);
+};
+
+
 
 var heroes = {
   'Link': new Hero ({
@@ -45,9 +53,11 @@ var heroes = {
     die: function(){
       $('#linkDie')[0].play();
     },
-    health: 12,
-    power: 1,
-    avatar: "http://www.supermariobrosx.org/forums/download/file.php?avatar=4411_1430490375.jpg",
+
+
+    health: _.random(9, 10),
+    power: _.random(5,8),
+    avatar: "http://vignette4.wikia.nocookie.net/zelda/images/c/ca/Link_Artwork_2_(Twilight_Princess).png/revision/20160110212446",
     victory: "http://static.srcdn.com/slir/w620-h320-q90-c620:320/wp-content/uploads/legend-zelda-netflix-tv-series-link.jpg"
 
 
@@ -57,13 +67,16 @@ var heroes = {
     name: 'Zelda',
     sfx: function(){
       $('#zeldaSfx')[0].play();
+      setTimeout(function(){
+        $('#damageSfx')[0].play();
+      }, 700);
     },
     die: function(){
       $('#zeldaDie')[0].play();
     },
-    health: 8,
-    power: 3,
-    avatar: "http://www.unikgamer.com/characters/face/princess-zelda-77.jpg",
+    health: _.random(8,9),
+    power: _.random(4,5),
+    avatar: "http://vignette3.wikia.nocookie.net/zelda/images/2/22/Zelda_(SSB_3DS_%26_Wii_U).png/revision/latest?cb=20140610212822",
     victory: "http://www.wallpaperhi.com/thumbnails/detail/20130512/the%20legend%20of%20zelda%20princess%20zelda_www.wallpaperhi.com_7.jpg"
 
   }),
@@ -99,11 +112,18 @@ function Monster(params){
 
 Monster.prototype = new Hero();
 
+Monster.prototype.hurt = function() {
+  $('#monster-image').addClass('shake');
+  setTimeout(function(){
+    $('#monster-image').removeClass('shake');
+  }, 1500);
+};
+
 var monsters= {
   'Ganondorf': new Monster ({
     name: 'Ganondorf',
-    health: 12,
-    power: 1,
+    health: _.random(10,12),
+    power: _.random(7,8),
     warCry: function(){
       $('#ganonLaugh')[0].play();
       //document.getElementById('ganonLaugh').play();
@@ -118,21 +138,36 @@ var monsters= {
     die: function(){
       $('#ganondorfDie')[0].play();
     },
-    avatar: 'http://pre02.deviantart.net/b1f2/th/pre/f/2012/268/7/6/ganondorf_by_theminttu-d5fwoo8.jpg'
+    avatar: 'http://vignette1.wikia.nocookie.net/dynastywarriors/images/b/b7/Ganondorf_Costume_1_-_HW_DLC.png/revision/latest?cb=20140809043142'
   }),
 
-  'Demise': new Monster ({
-    name: 'Demise',
-    health: 8,
-    power: 3,
-    avatar: 'http://vignette2.wikia.nocookie.net/zelda/images/4/45/Demise_Artwork.png/revision/latest?cb=20111109235625'
+  'Volvagia': new Monster ({
+    name: 'Volvagia',
+    warCry: function(){
+      $('#volvagiaWarCryA')[0].play();
+      setTimeout(function(){
+        $('#volvagiaWarCryB')[0].play();
+      }, 800);
+
+    },
+    sfx: function(){
+      $('#volvagiaSfx')[0].play();
+
+
+    },
+    die: function(){
+      $('#die_sfx')[0].play();
+    },
+    health: _.random(8, 9),
+    power: _.random(6,8),
+    avatar: 'http://vignette2.wikia.nocookie.net/zelda/images/5/52/Volvagia_Artwork.png/revision/latest?cb=20100504170218'
 
   }),
 
   'Twinrova': new Monster ({
     name: 'Twinrova',
-    health: 10,
-    power: 2,
+    health: _.random(7, 9),
+    power: _.random(6,7),
     warCry: function(){
       $('#twinrovaAppear')[0].play();
       setTimeout(function(){
@@ -145,13 +180,13 @@ var monsters= {
     die: function(){
       $('#twinrovaDie')[0].play();
     },
-    avatar: 'http://images1.wikia.nocookie.net/__cb20110721220244/villains/images/b/b8/Twinrova_seperated.png'
+    avatar: 'http://vignette3.wikia.nocookie.net/zelda/images/8/8e/Twinrova_(Oracle_of_Ages_and_Seasons).png/revision/latest?cb=20100328042014'
   }),
 
-  'Gohma': new Monster ({
-    name: 'Gohma',
-    health: 8,
-    power: 5,
+  'Ganon': new Monster ({
+    name: 'Ganon',
+    health: _.random(5, 10),
+    power: _.random(3,5),
     warCry: function(){
       $('#gohmaScream')[0].play();
     },
@@ -161,14 +196,26 @@ var monsters= {
     die: function(){
       $('#gohmaDie')[0].play();
     },
-    avatar: 'http://vignette4.wikia.nocookie.net/zelda/images/b/b1/Queen_Gohma_Artwork.png/revision/latest?cb=20110427012302'
+    avatar: 'http://www.nintendojo.com/wp-content/uploads/2011/10/Zelda-Top-Ten-Bosses-Ganon-276x360.png'
   }),
 
-  'Majora': new Monster ({
-    name: 'Majora',
-    health: 8,
-    power: 5,
-    avatar: 'http://images.wikia.com/villains/images/2/2e/Majora_god.png',
+  'King Dodongo': new Monster ({
+    name: 'King Dodongo',
+    warCry: function(){
+      $('#dogongoWarCryA')[0].play();
+      setTimeout(function(){
+        $('#dogongoWarCryB')[0].play();
+      }, 800);
+    },
+    sfx: function(){
+      $('#dogongoSfx')[0].play();
+    },
+    die: function(){
+      $('#die_sfx')[0].play();
+    },
+    health: _.random(5,8),
+    power: _.random(5,8),
+    avatar: "http://vignette3.wikia.nocookie.net/zelda/images/9/9a/Dodongo_Artwork_(Ocarina_of_Time_and_Majora's_Mask).png/revision/latest?cb=20140526085919",
   })
 };
 
