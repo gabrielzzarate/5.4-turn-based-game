@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>5 4 turn based game</title>
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+
+      <div class="container-fluid">
+
+            <div class="game-container"><br><br>
+            <div class="col-md-8 col-md-offset-1">
+              <iframe src="//giphy.com/embed/leAV27tKs2PiE" width="900" height="700" frameborder="0" class="giphy-embed intro-gif" allowfullscreen></iframe>
+             <!-- <img src="https://s-media-cache-ak0.pinimg.com/736x/8c/9f/b2/8c9fb2ec1e7f017c58964561ea24e00c.jpg" alt=""> -->
+            </div>
+
+
+
+          </div>
+      </div>
+
+       <audio id="ganonLaugh" src="audio/ganonLaugh.wav" type="audio/wav"></audio>
+       <audio id="twinrovaAppear" src="audio/Twinrova_Appear.wav" type="audio/wav"></audio>
+       <audio id="twinrovaLaugh" src="audio/Twinrova_Laugh.wav" type="audio/wav"></audio>
+       <audio id="gohmaScream" src="audio/Gohma_Scream.wav" type="audio/wav"></audio>
+       <audio id="ganondorfSfxA" src="audio/Ganondorf_sfx_a.wav" type="audio/wav"></audio>
+       <audio id="ganondorfSfxB" src="audio/Ganondorf_sfx_b.wav" type="audio/wav"></audio>
+       <audio id="ganondorfDie" src="audio/Ganondorf_die.wav" type="audio/wav"></audio>
+       <audio id="twinrovaSfx" src="audio/Twinrova_sfx.wav" type="audio/wav"></audio>
+       <audio id="twinrovaDie" src="audio/Twinrova_die.wav" type="audio/wav"></audio>
+       <audio id="gohmaSfx" src="audio/Gohma_sfx.wav" type="audio/wav"></audio>
+       <audio id="gohmaDie" src="audio/Gohma_die.wav" type="audio/wav"></audio>
+       <audio id="linkSfx" src="audio/link_sfx.wav" type="audio/wav"></audio>
+       <audio id="linkDie" src="audio/link_die.wav" type="audio/wav"></audio>
+       <audio id="zeldaSfx" src="audio/Zelda_sfx.wav" type="audio/wav"></audio>
+       <audio id="zeldaDie" src="audio/Zelda_die.wav" type="audio/wav"></audio>
+       <audio id="youngLinkSfx" src="audio/youngLink_attack.wav" type="audio/wav"></audio>
+       <audio id="youngLinkDie" src="audio/youngLink_die.wav" type="audio/wav"></audio>
+        <audio id="sheikSfx" src="audio/Sheik_sfx.wav" type="audio/wav"></audio>
+         <audio id="sheikDie" src="audio/Sheik_die.wav" type="audio/wav"></audio>
+         <audio id="gameOverLaugh" src="audio/gameOver_laugh.wav" type="audio/wav"></audio>
+         <audio id="youWin" src="audio/youwin.wav" type="audio/wav"></audio>
+          <audio id="volvagiaWarCryA" src="audio/Volvagia_emerge_a.wav" type="audio/wav"></audio>
+          <audio id="volvagiaWarCryB" src="audio/Volvagia_scream.wav" type="audio/wav"></audio>
+          <audio id="volvagiaSfx" src="audio/Volvagia_attack.wav" type="audio/wav"></audio>
+          <audio id="dogongoWarCryA" src="audio/Dogongo_warcryA.wav" type="audio/wav"></audio>
+          <audio id="dogongoWarCryB" src="audio/Dogongo_warcryB.wav" type="audio/wav"></audio>
+          <audio id="dogongoSfx" src="audio/Dogongo_attack.wav" type="audio/wav"></audio>
+          <audio id="damageSfx" src="audio/damage_sfx.wav" type="audio/wav"></audio>
+          <audio id="dieSfx" src="audio/die_sfx.wav" type="audio/wav"></audio>
+
+
+
+    <!-- handlebars templates ---->
+
+    <script id="choose-hero" type="text/x-handlebars-template">
+
+
+      <audio id="zeldaTheme" src="audio/zelda_theme.wav" type="audio/wav" preload="auto"></audio>
+      <div class="choose-hero-container">
+          <select name="Choose Your Hero" id="hero-selection">
+            <option value="Choose Your Hero">Choose Your Hero</option>
+            <option value="{{Link.name}}">{{Link.name}}</option>
+            <option value="{{Zelda.name}}">{{Zelda.name}}</option>
+
+            <option value="{{Sheik.name}}">{{Sheik.name}}</option>
+
+
+          </select>
+
+          <button type="button" class="btn btn-danger start-button">Start Game</button>
+    </div>
+
+
+
+
+
+    </script>
+
+
+    <script id="setStage-template" type="text/x-handlebars-template">
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="col-md-8 col-md-offset-1">
+      <audio id="setStage" src="audio/setStageTune.wav" type="audio/wav"></audio>
+      <iframe src="//giphy.com/embed/z0IajaXUOjGNO" width="900" height="700" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    </div>
+    </script>
+
+
+    <script id="arena-template" type="text/x-handlebars-template">
+
+        <div class="row fight-container">
+          <div class="col-md-5 col-md-offset-1">
+            <div class="panel panel-default panel-transparent hero-panel">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{hero.name}}</h3>
+              </div>
+              <div class="panel-body">
+                  <button type="button" class="btn btn-danger attack-button">Attack</button>
+                  <img id="hero-image" src="{{hero.avatar}}" alt=""><br>
+                  <p>Health</p>
+
+
+
+                  <p class="hero-health">{{hero.health}}</p>
+
+            </div>
+
+            </div>
+          </div>
+
+
+          <div class="col-md-5">
+            <div class="panel panel-default panel-transparent monster-panel">
+              <div class="panel-heading">
+
+                <h3 class="panel-title">{{randomMonster.name}}</h3>
+                <span>{{randomMonster.warCry}}</span>
+
+              </div>
+              <div class="panel-body">
+                  <img id='monster-image' src="{{randomMonster.avatar}}" alt="">
+                  <br>
+                  <p>Health</p>
+                  <p class="monster-health">{{randomMonster.health}}</p>
+            </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+     </script>
+
+
+    <script id="gameOver-template" type="text/x-handlebars-template">
+          <h1 class="losing-title">YOU LOSE</h1>
+          <img class="gameover-image" src="http://img2.wikia.nocookie.net/__cb20140107145142/villains/images/d/d3/-ganondorf-triforce-hd-wallpaper.jpg" alt="">
+
+
+    </script>
+
+    <script id="youwin-template" type="text/x-handlebars-template">
+          <h1 class="winning-title">YOU WIN!</h1>
+          <img src="http://www.imgbase.info/images/safe-wallpapers/video_games/zelda/21324_zelda_legend_of_zelda.jpg" alt="">
+
+
+    </script>
+
+
+    <script src="js/bundle.js"></script>
+  </body>
+</html>
